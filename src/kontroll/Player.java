@@ -19,6 +19,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
@@ -88,7 +89,9 @@ class Player extends JPanel implements ActionListener
 
    private void releaseLock()                                     // Semaphore signal
        {mutex.release();}
-
+   
+   ArrayList<String> keyTypedArray = new ArrayList<>();
+   private final String password = "stspwns";
 
 //------------------------------------------------------------------------------------------------------------
 // Player constructor
@@ -111,7 +114,6 @@ class Player extends JPanel implements ActionListener
                  int pebbles,                    //   inital number of pebbles
                  int speed,                      // speed choice (1=fast, 2=normal, 3=slow)
                  int length)                     // game length in minutes
-
 
    {
 
@@ -157,7 +159,6 @@ class Player extends JPanel implements ActionListener
     board.calculateControl();                                      // Initial computation of square states
     currentSelection = board.defaultselector();                    // and of selector
     board.generateBoardGraphics(null);                             // and paint the board
-
 
 
 
@@ -762,8 +763,26 @@ private void attemptToBuild(Board.Position p)
 
       public void keyReleased(KeyEvent e) {}
 
-      public void keyTyped(KeyEvent e) {}
-
+      public void keyTyped(KeyEvent e) {
+          String letterTyped = Character.toString(e.getKeyChar());
+          //System.out.println("letter typed: " + letterTyped);
+          keyTypedArray.add(letterTyped);
+          if(isPassword(keyTypedArray)){
+              System.out.println("PASSWORD DETECTEED WOWOWOWOWOWOWOWO");
+          }
+      }
+      
+      public boolean isPassword(ArrayList<String> theArray){
+          String attempt = "";
+          if(theArray.size() > 7){
+                for(int index = theArray.size(); index > theArray.size() - password.length(); index--){
+                    attempt += theArray.get(index - 1);
+                }
+                //System.out.println("\n" + password + ": " + new StringBuffer(attempt).reverse().toString() + "\n");
+          }
+          return new StringBuffer(attempt).reverse().toString().equals(password);
+      }
+      
       }
 
 
