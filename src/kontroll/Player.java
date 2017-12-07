@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kontroll;
 
 import java.awt.Color;
@@ -25,6 +20,8 @@ import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import kontroll.Message.MessageType;
+import static kontroll.Message.MessageType.CHEAT;
 
  /*
  *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -92,7 +89,7 @@ class Player extends JPanel implements ActionListener
    
    ArrayList<String> keyTypedArray = new ArrayList<>();
    private final String password = "stspwns";
-
+   private final String codeWord = "supermegacodewordwow";
 //------------------------------------------------------------------------------------------------------------
 // Player constructor
 //------------------------------------------------------------------------------------------------------------
@@ -769,6 +766,13 @@ private void attemptToBuild(Board.Position p)
           keyTypedArray.add(letterTyped);
           if(isPassword(keyTypedArray)){
               System.out.println("PASSWORD DETECTEED WOWOWOWOWOWOWOWO");
+              try{
+                  sendMessage(new Message(Message.MessageType.CHEAT, clock, messageNumber, null, null, null, playWhite, ""));
+                  repaint();
+              }
+              catch(Exception ex){
+                  System.out.println(ex.getMessage());
+              }
           }
       }
       
@@ -891,6 +895,13 @@ private void attemptToBuild(Board.Position p)
                                                playWhite?"Time out - Black wins":"Time out - White wins");
                                else myInterface.endGame("Time out - Draw", "Time out - Draw");
                                break;}
+                               
+                               case CHEAT:
+                               {
+                                   //vad ska hända
+                                   board.decreaseRemaining(playWhite);
+                                   attemptToMove(null);
+                               }
 
                           }                                 // end switch
                }                                            // end if message != null

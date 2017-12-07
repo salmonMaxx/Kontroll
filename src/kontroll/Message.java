@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kontroll;
 //---------------------------------------------------------------------------------
 // Message is just a wrapper for data being sent.
@@ -14,7 +9,7 @@ import java.io.Serializable;
 
      class Message implements Serializable
    {
-      enum MessageType {ACK, MOVE, BUILD, QUIT, EXPIRED};   // The different types of messages
+      enum MessageType {ACK, MOVE, BUILD, QUIT, EXPIRED, CHEAT};   // The different types of messages
 
       MessageType  messageType;      // type of message
       int time;             // time it is sent (seconds)
@@ -27,14 +22,14 @@ import java.io.Serializable;
 
    // The constructor just sets the fields from the parameters
 
-    public Message(MessageType mt,  int ti, int nu, Board.Position s, Board.Position p, Piece.Type pt,  boolean w, String te)
-    { messageType = mt;
-      time = ti;
-      number = nu;
-      this.s = s;
-      this.p = p;
-      this.pt = pt;
-      this.white = w;
-      text = te;
+    public Message(MessageType mt,  int ti, int nu, Board.Position s, Board.Position p, Piece.Type pt,  boolean w, String te){
+        messageType = mt;
+        time = ti;
+        number = nu;
+        this.s = s;
+        this.p = p;
+        this.pt = pt;
+        this.white = w;
+        text = te;
     }
-   }
+}
