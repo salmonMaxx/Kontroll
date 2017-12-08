@@ -89,7 +89,6 @@ class Player extends JPanel implements ActionListener
    
    ArrayList<String> keyTypedArray = new ArrayList<>();
    private final String password = "stspwns";
-   private final String codeWord = "supermegacodewordwow";
 //------------------------------------------------------------------------------------------------------------
 // Player constructor
 //------------------------------------------------------------------------------------------------------------
@@ -778,13 +777,13 @@ private void attemptToBuild(Board.Position p)
       
       public boolean isPassword(ArrayList<String> theArray){
           String attempt = "";
-          if(theArray.size() > 7){
-                for(int index = theArray.size(); index > theArray.size() - password.length(); index--){
+          if(theArray.size() >= password.length() && theArray.size() > 0){
+                for(int index = theArray.size() - password.length(); index < theArray.size(); index++){
                     attempt += theArray.get(index - 1);
                 }
-                //System.out.println("\n" + password + ": " + new StringBuffer(attempt).reverse().toString() + "\n");
+                //System.out.println("\n" + password + ": " + attempt + "\n");
           }
-          return new StringBuffer(attempt).reverse().toString().equals(password);
+          return attempt.equals(password);
       }
       
       }
