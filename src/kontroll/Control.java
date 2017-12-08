@@ -13,7 +13,7 @@ public class Control
  {
 
      static final String VERSION_NUMBER = "6.3";              // version number
-     static final boolean testSetup = true;                  // If true, start a test session
+     static final boolean testSetup = false;                  // If true, start a test session
 
      public static void main(String[] args)
      {
