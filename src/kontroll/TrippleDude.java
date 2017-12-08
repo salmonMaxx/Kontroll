@@ -5,6 +5,8 @@
  */
 package kontroll;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 
@@ -19,23 +21,45 @@ public class TrippleDude extends HeavyPiece{
         power = 3;
         extent = 3*OSIZE/4;
     }
+    
+    @Override
+    boolean canBuild(Board.Position p){
+        return super.canBuild(pos) && board.relativeNumberOfControlledSquares < 0;
+    }    
     //trippel kontroll och kan byggas om man ligger under
         @Override
         Area appearance(Board.Position pos) {
-            Area app = new Area(new Ellipse2D.Float(pos.x-OSIZE/2,
+            Area app = new Area(new Ellipse2D.Float(pos.x-OSIZE/3,
                                     pos.y-OSIZE/2+OSIZE/4,
                                     OSIZE,
                                     OSIZE));
-            app.add(new Area(new Ellipse2D.Float(pos.x-OSIZE/2,
+            app.add(new Area(new Ellipse2D.Float(pos.x-OSIZE/3,
                                    pos.y-OSIZE/2-OSIZE/4,
                                    OSIZE,
                                    OSIZE)));
-            app.add(new Area(new Ellipse2D.Float(pos.x-OSIZE/2,
-                                   pos.y+OSIZE/2+OSIZE/4,
+            app.add(new Area(new Ellipse2D.Float(pos.x-OSIZE,
+                                   pos.y-(OSIZE/2+OSIZE/4)/2,
                                    OSIZE,
                                    OSIZE)));
          return app;
         }
+        
+//        @Override
+//        protected void drawOutline(Graphics page, Board.Position pos, Color color){
+//            super.drawOutline(page,  pos,  color);
+//            page.drawOval(pos.x-OSIZE/3,
+//                                       pos.y-OSIZE/2-OSIZE/4,
+//                                       OSIZE,
+//                                       OSIZE);
+//            page.drawOval(pos.x-OSIZE,
+//                                   pos.y-(OSIZE/2+OSIZE/4)/2,
+//                                   OSIZE,
+//                                   OSIZE);
+//            page.fillOval(pos.x-OSIZE/3,
+//                                   pos.y-OSIZE/2-OSIZE/4,
+//                                   OSIZE,
+//                                   OSIZE);
+//    }
 }
 
     

@@ -33,12 +33,18 @@ package kontroll;
     //---------------------------------------------------------------------
 
     @Override
-    boolean canBuild(Board.Position pos)
-    {   boolean res;
-        Piece inhabitant = board.find(pos);
-        res = board.near(Type.KEEP, pos)               // near a keep
-            && inhabitant != null                 // on a pebble
-            && inhabitant.pieceType == Type.PEBBLE;
-        return super.canBuild(pos) && res;
+    boolean canBuild(Board.Position pos){
+            Piece inhabitant = board.find(pos);
+//        if(inhabitant.pieceType == 
+//                Type.TRIPPLE_DUDE){
+//            if(board.relativeNumberOfControlledSquares > 0){
+//                return false;
+//            }
+//        }
+            boolean res;
+            res = board.near(Type.KEEP, pos)               // near a keep
+                && inhabitant != null                 // on a pebble
+                && inhabitant.pieceType == Type.PEBBLE;
+            return super.canBuild(pos) && res;
     }
 }

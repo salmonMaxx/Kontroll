@@ -435,7 +435,7 @@ import java.util.Random;
     //----------------Set the default selector-----------------------------------------
 
       Piece defaultselector()                              // default selector is topmost available selector
-        {for (int y=0; y<5; y++)                                 // y runs through selector idx
+        {for (int y=0; y<6; y++)                                 // y runs through selector idx
             if (initialselectors[y].shouldShowSelector()) // if selector y is available
               {selectorIdx = y;                                  // then this is it!
                return initialselectors[y];}
@@ -459,7 +459,7 @@ import java.util.Random;
 
      Piece select(Position p)
     { Piece result = null;
-        for (int y=0; y<5 ; y++)                     // y runs through selector idx
+        for (int y=0; y<6 ; y++)                     // y runs through selector idx
           {   Piece piece = initialselectors[y];
               if (piece.shouldShowSelector()               // if the selector is shown
                  && piece.on(p))                                   // and is located on p
