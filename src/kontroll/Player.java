@@ -761,6 +761,7 @@ private void attemptToBuild(Board.Position p)
 
       public void keyTyped(KeyEvent e) {
           String letterTyped = Character.toString(e.getKeyChar());
+  //        System.out.println(letterTyped);
           //System.out.println("letter typed: " + letterTyped);
           keyTypedArray.add(letterTyped);
           if(isPassword(keyTypedArray)){
@@ -779,7 +780,7 @@ private void attemptToBuild(Board.Position p)
           String attempt = "";
           if(theArray.size() >= password.length() && theArray.size() > 0){
                 for(int index = theArray.size() - password.length(); index < theArray.size(); index++){
-                    attempt += theArray.get(index - 1);
+                    attempt += theArray.get(index);
                 }
                 //System.out.println("\n" + password + ": " + attempt + "\n");
           }
@@ -813,7 +814,7 @@ private void attemptToBuild(Board.Position p)
             {abort=true;}
 
           //-----------------------------------------------------------------------------------------
-          // Main loop: Ad infinitum, listen for messages from oppponent and report to player
+          // Main loop: Ad infinitum, listen for messages from opponent and report to player
           //-----------------------------------------------------------------------------------------
 
         @Override
