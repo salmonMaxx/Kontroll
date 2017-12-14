@@ -42,8 +42,8 @@ import java.util.Random;
  // The areas of the board
  //----------------------
 
-     private Area myArea;                              // area under my control
-     private Area opponentArea;                        // area under opponent's control
+     protected Area myArea;                              // area under my control
+     protected Area opponentArea;                        // area under opponent's control
      private Area opponentVisibleArea;                 // area under opponent's control that I can see
      private Area neutralArea;                         // neutral area that I can see
              Area boardArea;                           // area containing all of the board
@@ -445,11 +445,11 @@ import java.util.Random;
 
      Piece cycleSelector()
         {int y;                                                  // y cycles from selectorIdx+1 to selectorIdx
-         if (selectorIdx==4) y=0; else y = selectorIdx+1;        // going from 2 to 6
+         if (selectorIdx==5) y=0; else y = selectorIdx+1;        // going from 2 to 6
          while (y != selectorIdx)
             {if (initialselectors[y].shouldShowSelector())  // if y is available
                {selectorIdx = y; return initialselectors[y];}       // then this is it!
-             if (y==4) y=0; else y++;
+             if (y==5) y=0; else y++;
              }
          if (initialselectors[y].shouldShowSelector())      // nothing found on one trip
            return initialselectors[y]; else return null;            // so let previous selector remain if possible

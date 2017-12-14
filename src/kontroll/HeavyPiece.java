@@ -42,6 +42,9 @@ package kontroll;
 //            }
 //        }
             boolean res;
+//            System.out.println("near: " + board.near(Type.KEEP, pos));
+//            System.out.println("inhabitant != null: " + inhabitant != null);
+//            System.out.println("pieceType: " + (inhabitant.pieceType == Type.PEBBLE));
             res = board.near(Type.KEEP, pos)               // near a keep
                 && inhabitant != null                 // on a pebble
                 && inhabitant.pieceType == Type.PEBBLE;

@@ -23,10 +23,12 @@ public class TrippleDude extends HeavyPiece{
     }
     
     @Override
-    boolean canBuild(Board.Position p){
-        return super.canBuild(pos) && board.relativeNumberOfControlledSquares < 0;
+    boolean canBuild(Board.Position pos){
+        //System.out.println(board.relativeNumberOfControlledSquares);
+        //System.out.println(super.canBuild(pos));
+        return super.canBuild(pos) && board.relativeNumberOfControlledSquares < 0;      
     }    
-    //trippel kontroll och kan byggas om man ligger under
+    
         @Override
         Area appearance(Board.Position pos) {
             Area app = new Area(new Ellipse2D.Float(pos.x-OSIZE/3,
@@ -43,23 +45,6 @@ public class TrippleDude extends HeavyPiece{
                                    OSIZE)));
          return app;
         }
-        
-//        @Override
-//        protected void drawOutline(Graphics page, Board.Position pos, Color color){
-//            super.drawOutline(page,  pos,  color);
-//            page.drawOval(pos.x-OSIZE/3,
-//                                       pos.y-OSIZE/2-OSIZE/4,
-//                                       OSIZE,
-//                                       OSIZE);
-//            page.drawOval(pos.x-OSIZE,
-//                                   pos.y-(OSIZE/2+OSIZE/4)/2,
-//                                   OSIZE,
-//                                   OSIZE);
-//            page.fillOval(pos.x-OSIZE/3,
-//                                   pos.y-OSIZE/2-OSIZE/4,
-//                                   OSIZE,
-//                                   OSIZE);
-//    }
 }
 
     

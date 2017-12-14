@@ -20,7 +20,6 @@ import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import kontroll.Message.MessageType;
 import static kontroll.Message.MessageType.CHEAT;
 
  /*
@@ -898,7 +897,6 @@ private void attemptToBuild(Board.Position p)
                                
                                case CHEAT:
                                {
-                                   //vad ska hända
                                    board.decreaseRemaining(playWhite);
                                    attemptToMove(null);
                                }
